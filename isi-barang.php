@@ -48,22 +48,23 @@
 				<tr height="46">
 					<td></td>
 					<td><font size="3" color="white">Judul</font></td>
-					<td><input type="text" name="nama" size="35" maxlength="30" /></td>
+					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
 				</tr>
 				<tr height="46">
 					<td></td>
 					<td><font size="3" color="white">Penulis</font></td>
-					<td><input type="text" name="penulis" size="35" maxlength="30" /></td>
+					<td><input type="text" name="penulis" size="35" maxlength="100" /></td>
 				</tr>
 				<tr height="46">
 					<td></td>
 					<td><font size="3" color="white">Jenis</font></td>
 					<td><select name="jenis">
 						<option value="Novel">Novel
-						<option value="Kamus">Kamus
-						<option value="Majalah">Majalah
-						<option value="Ensiklopedia">Ensiklopedia
-						<option value="Biografi">Biografi
+						<option value="Sejarah">Sejarah
+						<option value="Filsafat">Filsafat
+						<option value="Psikologi">Psikologi
+						<option value="Komik">Komik
+						<option value="Komputer">Komputer
 					</select></td>
 				</tr>
 				<tr height="46">

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Data Master Penerbit</title>
+		<title>Katalog</title>
 		<style type="text/css">
 			body		{
 							background-color: #0B2447;
@@ -71,40 +71,41 @@ $no = 1;
 	$previous = $halaman - 1;
 	$next = $halaman + 1;
 	
-	$data = mysqli_query($db,"select * from supplier");
+	$data = mysqli_query($db,"select * from barang");
 	$jumlah_data = mysqli_num_rows($data);
 	$total_halaman = ceil($jumlah_data / $batas);
 
-	$data_barang = mysqli_query($db,"select * from supplier limit $halaman_awal, $batas");
+	$data_barang = mysqli_query($db,"select * from barang limit $halaman_awal, $batas");
 	$nomor = $halaman_awal+1;
 	
 ?>
-<h2><font color="white">LAPORAN DATA SUPPLIER</font></h2>
+<h2><font color="white">KATALOG BUKU</font></h2>
 <br>
 	<form method="post">
 		<input type="text" name="nt" placeholder="Pencarian">
 		<input type="submit" name="submit" value="Cari Data">
-		<input type="button" onclick="location.href='lihat_supplier.php';" value="Tampilkan Semua"
-	<form>
+		<input type="button" onclick="location.href='lihat_data.php';" value="Tampilkan Semua"
+	</form>
 <br/>
 <br/>
-	<div class = "container">
+<div class = "container">
 	<table class="table table-bordered">
 		<thead class="thead-dark">
 			<tr>
 				<th>No</th>
 				<th>Barcode</th>
-				<th>Penerbit</th>
-				<th>Buku</th>
-				<th>Alamat</th>
-				<th>Telepon</th>
+				<th>Nama</th>
+				<th>Penulis</th>
+				<th>Jenis</th>
+				<th>Tahun Terbit</th>
+				<th>Stok</th>
 			</tr>
 		</thead>
 		<tbody>
-				<?php 
+			<?php 
 			if (isset($_POST['submit'])) {
 			$cari = $_POST['nt'];
-			$query2 = "SELECT * FROM supplier WHERE barcode LIKE '%$cari%' OR penerbit LIKE '%$cari%' OR buku LIKE '%$cari%' OR alamat LIKE '%$cari%' OR telepon LIKE '%$cari%'";
+			$query2 = "SELECT * FROM barang WHERE barcode LIKE '%$cari%' OR nama LIKE '%$cari%' OR penulis LIKE '%$cari%' OR jenis LIKE '%$cari%' OR tahun LIKE '%$cari%' OR stok LIKE '%$cari%'";
 			$sql = mysqli_query($db, $query2);
 			$jumlah_hasil = mysqli_num_rows($sql);
 
@@ -117,10 +118,11 @@ $no = 1;
 						<tr>
 							<td><?php echo $no++ ?></td>
 							<td><?php echo $r['Barcode']; ?></td>
-							<td><?php echo $r['Penerbit']; ?></td>
-							<td><?php echo $r['Buku']; ?></td>
-							<td><?php echo $r['Alamat']; ?></td>
-							<td><?php echo $r['Telepon']; ?></td>
+							<td><?php echo $r['Nama']; ?></td>
+							<td><?php echo $r['Penulis']; ?></td>
+							<td><?php echo $r['Jenis']; ?></td>
+							<td><?php echo $r['Tahun']; ?></td>
+							<td><?php echo $r['Stok']; ?></td>
 						</tr>
 					<?php
 					}
@@ -137,18 +139,19 @@ $no = 1;
 					<tr>
 						<td><?php echo $d['No']; ?></td>
 						<td><?php echo $d['Barcode']; ?></td>
-						<td><?php echo $d['Penerbit']; ?></td>
-						<td><?php echo $d['Buku']; ?></td>
-						<td><?php echo $d['Alamat']; ?></td>
-						<td><?php echo $d['Telepon']; ?></td>
+						<td><?php echo $d['Nama']; ?></td>
+						<td><?php echo $d['Penulis']; ?></td>
+						<td><?php echo $d['Jenis']; ?></td>
+						<td><?php echo $d['Tahun']; ?></td>
+						<td><?php echo $d['Stok']; ?></td>
 					</tr>
 					<?php
 				}
 			}
 			?>
-	</tbody>
+	</tbody>			
 	</table>
-	<nav>
+		<nav>
 			<ul class="pagination justify-content-center">
 					<a class="page-link" <?php if($halaman > 1){ echo "href='?halaman=$previous'"; } ?>>&laquo;</a>
 				<?php 
@@ -162,18 +165,7 @@ $no = 1;
 			</ul>
 		</nav>
 </div>		
-	<br>
-	<tr height="46">
-			<td> </td>
-			<td> </td>
-			<td>
-				<input type="button" onclick="location.href='home.php';" value="Home"
-			</td>
-			<td>
-				<input type = "button" onclick="location.href='laporan-penerbit.php';" value = "PDF"
-			</td>
-		</tr>
-	</tr>
-	</br>
+<br>
+</br>
 </body>
 </html>

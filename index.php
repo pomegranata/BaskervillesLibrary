@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Baskervilles Store</title>
+		<title>Baskervilles' Library</title>
 		<style type="text/css">
 			* {
 			margin: 0;
@@ -86,8 +86,8 @@
 	</head>
 	<body>
 		<div class="container">
-			<h2>Selamat Datang di</h2>
-			<h1>Baskervilles Store</h1>
+			<h2>Welcome to</h2>
+			<h1>Baskervilles' Store</h1>
 				<form name="form-login" method="POST" action="login.php">
 					<table width="310" border="0" cellpadding="0" cellspacing="0">
 						<tr>

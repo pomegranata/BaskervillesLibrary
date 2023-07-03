@@ -62,6 +62,23 @@
 require_once'koneksi.php';
 $no = 1;
 ?>
+
+<?php
+	$batas = 5;
+	$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+	$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+	$previous = $halaman - 1;
+	$next = $halaman + 1;
+	
+	$data = mysqli_query($db,"select * from barang");
+	$jumlah_data = mysqli_num_rows($data);
+	$total_halaman = ceil($jumlah_data / $batas);
+
+	$data_barang = mysqli_query($db,"select * from barang limit $halaman_awal, $batas");
+	$nomor = $halaman_awal+1;
+	
+?>
 <h2><font color="white">LAPORAN DATA BUKU</font></h2>
 <br>
 	<form method="post">
@@ -85,21 +102,39 @@ $no = 1;
 			</tr>
 		</thead>
 		<tbody>
-				<?php 
-				$batas = 5;
-				$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-				$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
- 
-				$previous = $halaman - 1;
-				$next = $halaman + 1;
-				
-				$data = mysqli_query($db,"select * from barang");
-				$jumlah_data = mysqli_num_rows($data);
-				$total_halaman = ceil($jumlah_data / $batas);
- 
-				$data_barang = mysqli_query($db,"select * from barang limit $halaman_awal, $batas");
-				$nomor = $halaman_awal+1;
-				while($d = mysqli_fetch_array($data_barang)){
+			<?php 
+			if (isset($_POST['submit'])) {
+			$cari = $_POST['nt'];
+			$query2 = "SELECT * FROM barang WHERE barcode LIKE '%$cari%' OR nama LIKE '%$cari%' OR penulis LIKE '%$cari%' OR jenis LIKE '%$cari%' OR tahun LIKE '%$cari%' OR stok LIKE '%$cari%'";
+			$sql = mysqli_query($db, $query2);
+			$jumlah_hasil = mysqli_num_rows($sql);
+
+				if ($jumlah_hasil > 0) {
+					while ($r = mysqli_fetch_array($sql)) {
+					?>
+						<script language="JavaScript">
+							alert('Data ditemukan!');
+						</script>
+						<tr>
+							<td><?php echo $no++ ?></td>
+							<td><?php echo $r['Barcode']; ?></td>
+							<td><?php echo $r['Nama']; ?></td>
+							<td><?php echo $r['Penulis']; ?></td>
+							<td><?php echo $r['Jenis']; ?></td>
+							<td><?php echo $r['Tahun']; ?></td>
+							<td><?php echo $r['Stok']; ?></td>
+						</tr>
+					<?php
+					}
+				} else {
+					?>
+						<script language="JavaScript">
+							alert('Data tidak ditemukan!');
+						</script>
+					<?php
+				}
+		} else {
+				while ($d = mysqli_fetch_array($data_barang)) {
 					?>
 					<tr>
 						<td><?php echo $d['No']; ?></td>
@@ -108,144 +143,12 @@ $no = 1;
 						<td><?php echo $d['Penulis']; ?></td>
 						<td><?php echo $d['Jenis']; ?></td>
 						<td><?php echo $d['Tahun']; ?></td>
-						<td><?php echo $d['Stok'] ?></td>
+						<td><?php echo $d['Stok']; ?></td>
 					</tr>
 					<?php
 				}
-				?>
-			
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE barcode LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-		
-		<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE nama LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-		
-		<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE penulis LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-		
-		<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE jenis LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-		
-		<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE tahun LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-		
-		<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM barang WHERE stok LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	?>
-		
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Barcode']; ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Jenis']; ?></td>
-				<td><?php echo $r['Tahun']; ?></td>
-				<td><?php echo $r['Stok']; ?></td>
-			</tr>
-		<?php }} ?>
-
+			}
+			?>
 	</tbody>			
 	</table>
 		<nav>
@@ -268,6 +171,9 @@ if (ISSET($_POST['submit'])){
 		<td> </td>
 		<td>
 			<input type="button" onclick="location.href='home.php';" value="Home"
+		</td>
+		<td>
+			<input type = "button" onclick="location.href='laporan-barang.php';" value = "PDF"
 		</td>
 	</tr>
 </br>

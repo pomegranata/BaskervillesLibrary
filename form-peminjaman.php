@@ -34,7 +34,7 @@
 </head>
 <body>
 <div style="border:0; padding:10px; width:760px; height:auto;">
-    <form method="post" action="proses-peminjaman.php">
+    <form method="post" action="simpan_peminjaman.php">
 		<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
 		<tr height="46">
 				<td width="10%"></td>
@@ -72,6 +72,7 @@
 				<td><button type="submit" name="submit"> Pinjam </button>
 					<button type="reset" name="Reset"> Reset </button></td>
 					<button type="button" onclick="location.href='home.php';" value="Home"> Home </button>
+					<button type="button" onclick="location.href='KATALOG.php';" value="Katalog"> Katalog </button>
 				</td>
 		</tr>
 		</table>

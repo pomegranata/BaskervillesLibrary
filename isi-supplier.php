@@ -48,12 +48,12 @@
 				<tr height="46">
 					<td></td>
 					<td><font size="3" color="white">Penerbit</font></td>
-					<td><input type="text" name="nama" size="35" maxlength="30" /></td>
+					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
 				</tr>
 				<tr height="46">
 					<td></td>
-					<td><font size="3" color="white">Buku</font></td>
-					<td><input type="text" name="barang" size="35" maxlength="30" /></td>
+					<td><font size="3" color="white">Nama</font></td>
+					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
 				</tr>
 				<tr height="46">
 					<td></td>

@@ -63,9 +63,26 @@
 <br>
 
 <?php
-require_once'koneksi.php';
-$no = 1;
+	require_once'koneksi.php';
+	$no = 1;
 
+?>
+
+<?php
+	$batas = 3;
+	$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+	$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+
+	$previous = $halaman - 1;
+	$next = $halaman + 1;
+	
+	$data = mysqli_query($db,"select * from satuan");
+	$jumlah_data = mysqli_num_rows($data);
+	$total_halaman = ceil($jumlah_data / $batas);
+
+	$data_barang = mysqli_query($db,"select * from satuan limit $halaman_awal, $batas");
+	$nomor = $halaman_awal+1;
+	
 ?>
 <h2><font color="white">LAPORAN DATA JENIS BUKU</h2>
 <br>
@@ -85,48 +102,34 @@ $no = 1;
 				</tr>
 			</thead>
 			<tbody>
-			
-			<?php 
-				$batas = 2;
-				$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-				$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
- 
-				$previous = $halaman - 1;
-				$next = $halaman + 1;
-				
-				$data = mysqli_query($db,"select * from satuan");
-				$jumlah_data = mysqli_num_rows($data);
-				$total_halaman = ceil($jumlah_data / $batas);
- 
-				$data_barang = mysqli_query($db,"select * from satuan limit $halaman_awal, $batas");
-				$nomor = $halaman_awal+1;
-				while($d = mysqli_fetch_array($data_barang)){
-					?>
+			<?php
+			if (ISSET($_POST['submit'])) {
+				$cari = $_POST['nt'];
+				$query2 = "SELECT * FROM satuan WHERE jenis LIKE '%$cari%'";
+				$sql = mysqli_query($db, $query2);
+				while ($r = mysqli_fetch_array($sql)) {
+			?>
+					<script language="JavaScript">
+						alert('Data ditemukan!');
+					</script>
+					<tr>
+						<td><?php echo $no++ ?></td>
+						<td><?php echo $r['Jenis']; ?></td>
+					</tr>
+			<?php
+				}
+			} else {
+				while ($d = mysqli_fetch_array($data_barang)) {
+			?>
 					<tr>
 						<td><?php echo $d['No']; ?></td>
 						<td><?php echo $d['Jenis']; ?></td>
 					</tr>
-					<?php
+			<?php
 				}
+			}
 			?>
-				
-			<?php 
-				if (ISSET($_POST['submit'])){
-						$cari = $_POST['nt'];
-						$query2 = "SELECT * FROM satuan WHERE jenis LIKE '%$cari%'";
-
-						$sql = mysqli_query($db, $query2);
-						while ($r = mysqli_fetch_array($sql)){
-						 ?>
-								<script language="JavaScript">
-								alert('Data ditemukan!');
-								</script>
-						<tr>
-							<td><?php echo $no++ ?></td>
-							<td><?php echo $r['Jenis']; ?></td>
-						</tr>
-			<?php }} ?>
-			</tbody>
+		</tbody>
 	</table>
 		<nav>
 			<ul class="pagination justify-content-center">
@@ -148,6 +151,9 @@ $no = 1;
 			<td> </td>
 			<td>
 				<input type="button" onclick="location.href='home.php';" value="Home"
+			</td>
+			<td>
+				<input type = "button" onclick="location.href='laporan-jenis.php';" value = "PDF"
 			</td>
 		</tr>
 		</br>

@@ -21,7 +21,12 @@
 						font-family: sans-serif;
 						background-color: #0B2447;
 					}
-					
+					header{
+						background-color:#19376D;
+						color: #fff;
+						padding: 10px;
+						text-align: center;
+					}
 					.menu-dropmenu{
 						background-color: #19376D;
 					}
@@ -77,10 +82,35 @@
 						color: #ffffff ;
 						background: #f3f3f3 ;
 					}
+					main {
+					  margin: 20px;
+					  text-align: center;
+					}
+					
+					center{
+						margin: 20px;
+						text-align: center;
+						color: #ffffff;
+					}
+
+					button {
+						background: #FFFFFF;
+						border-radius: 999px;
+						box-shadow: #5E5DF0 0 10px 20px -10px;
+						box-sizing: border-box;
+						color: #1d1d1d;
+						font-family: Inter,Helvetica;
+						font-size: 14px;
+						font-weight: 600;
+						padding: 8px 18px;
+					}
 			</style>
 			</head>
 		<body>
-		<header class="header">
+		<header>
+			<h1>Baskervilles' Library</h1>
+		 </header>
+		<nav class="header">
 			<div class="menu-dropmenu">
 				<ul>
 					<li><a href="home.php">Home</a></li>
@@ -91,11 +121,11 @@
 							<li><a href="isi-supplier.php?p=Master Supplier Barang">Penerbit</a></li>
 						</ul>
 					</li>
-					<li class="dropdown"><a href="#">Data Transaksi</a>
+					<li class="dropdown"><a href="#">Data Peminjaman Buku</a>
 						<ul class="isi-dropdown">
 							<li><a href="form-peminjaman.php">Peminjaman Buku</a></li>
-							<li><a href="peminjaman.php">Riwayat Peminjaman</a></li>
-							<li><a href="#">Laporan Riwayat Peminjaman</a></li>
+							<li><a href="riwayat-peminjaman.php">Riwayat Peminjaman</a></li>
+							<li><a href="laporan-riwayat.php">Laporan Riwayat Peminjaman</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a href="#">Data Laporan</a>
@@ -103,18 +133,21 @@
 							<li><a href="lihat_data.php">Daftar Buku</a></li>
 							<li><a href="lihat_satuan.php">Daftar Jenis Buku</a></li>
 							<li><a href="lihat_supplier.php">Daftar Penerbit Buku</a></li>
-							<li><a href="#">Laporan</a></li>
+							<li><a href="laporan.php">Laporan</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Kontak</a></li>
+					<li><a href="kontak.html">Kontak</a></li>
 					<li><a href="log-out.php">Log Out</a></li>
 				</ul>
 			</div>
-		</header>
+		</nav>
 		<br/>
 		<center>
-			<h2><font color="white">Welcome To<br/></font></h2>
-			<h1><font color="white">Baskervilles' Library<br/></font></h1>
+			<h1>Selamat Datang di Baskervilles' Library</h1>
+			<br></br>
+			<p>Selamat Datang di Baskervilles' Library. Di sini Anda dapat menemukan berbagai buku menarik untuk dibaca.</p>
+			<br></br>
+			<button type="button" onclick="location.href='form-peminjaman.php';" value="pinjam"> Pinjam Buku </button>
 		</center>
 		</body>
 		</html>

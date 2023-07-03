@@ -88,6 +88,7 @@ if ($result->num_rows > 0) {
 ?>
 
 <div class = "container">
+	<form action="simpan_peminjaman.php" method="POST">
 	<table class="table table-bordered">
 			<thead class="thead-dark">
 				<tr>
@@ -100,8 +101,6 @@ if ($result->num_rows > 0) {
 				</tr>
 			</thead>
 			<tbody>
-			
-				
 				<tr>
 					<td><?php echo $nama; ?></td>
 					<td><?php echo $barang; ?></td>
@@ -110,9 +109,9 @@ if ($result->num_rows > 0) {
 					<td><?php echo $peminjaman; ?></td>
 					<td><?php echo $pengembalian; ?></td>
 				</tr>
-			
 			</tbody>
 		</table>
+	</form>	
 </div>
 	<br>
 		<button onclick = "location.href='invoices/Peminjaman.pdf'" type = "button"> PDF </button>
