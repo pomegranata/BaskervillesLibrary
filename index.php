@@ -87,7 +87,7 @@
 	<body>
 		<div class="container">
 			<h2>Welcome to</h2>
-			<h1>Baskervilles' Store</h1>
+			<h1>Baskervilles' Library</h1>
 				<form name="form-login" method="POST" action="login.php">
 					<table width="310" border="0" cellpadding="0" cellspacing="0">
 						<tr>

@@ -13,7 +13,7 @@
 			<meta charset="UTF-8">
 				<meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible" content="ie=edge">
 				<meta http-equiv="X-UA-Compatible" content="ie=edge">
-				<title>Baskervilles Store</title>
+				<title>Baskervilles' Library</title>
 				<style type="text/css">
 					body{
 						padding: 0;
@@ -136,7 +136,7 @@
 							<li><a href="laporan.php">Laporan</a></li>
 						</ul>
 					</li>
-					<li><a href="kontak.html">Kontak</a></li>
+					<li><a href="kontak.php">Kontak</a></li>
 					<li><a href="log-out.php">Log Out</a></li>
 				</ul>
 			</div>
@@ -145,7 +145,12 @@
 		<center>
 			<h1>Selamat Datang di Baskervilles' Library</h1>
 			<br></br>
-			<p>Selamat Datang di Baskervilles' Library. Di sini Anda dapat menemukan berbagai buku menarik untuk dibaca.</p>
+			<p>Di sini, kami menghadirkan dunia pengetahuan yang luas dan mengundang Anda untuk mengeksplorasi koleksi kami yang kaya. 
+			Silakan merajut kisah baru dan memperluas wawasan Anda melalui kata-kata dan cerita yang ada di rak buku kami. 
+			<br></br>
+			<p>Bersama-sama, mari kita nikmati petualangan intelektual yang tak terbatas dan menjelajahi dunia melalui halaman-halaman yang diisi dengan pengetahuan. 
+			<br></br>
+			<p>Selamat menikmati kunjungan Anda di perpustakaan kami yang ramah ini!</p>
 			<br></br>
 			<button type="button" onclick="location.href='form-peminjaman.php';" value="pinjam"> Pinjam Buku </button>
 		</center>

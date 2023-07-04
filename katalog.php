@@ -85,6 +85,7 @@ $no = 1;
 		<input type="text" name="nt" placeholder="Pencarian">
 		<input type="submit" name="submit" value="Cari Data">
 		<input type="button" onclick="location.href='lihat_data.php';" value="Tampilkan Semua"
+		<input type="button" onclick="location.href='form-peminjaman.php';" value="Kembali"
 	</form>
 <br/>
 <br/>

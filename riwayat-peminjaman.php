@@ -270,7 +270,7 @@ if (ISSET($_POST['submit'])){
 			<td> </td>
 			<td> </td>
 			<td>
-				<input type = "button" onclick = "location.href='riwayat/riwayat.pdf'" type = "button"> PDF </button>
+				<input type = "button" onclick="location.href='laporan-riwayat.php';" value = "PDF"
 			</td>
 	</tr>
 	</br>

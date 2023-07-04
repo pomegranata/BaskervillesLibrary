@@ -1,76 +1,138 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Input Data Supplier</title>
-		<style type = "text/css">
-			body	{
-				background-color: #0B2447;
-			}
+<head>
+    <title>Input Data Penerbit Buku</title>
+	<style type="text/css">
+		body {
+			background-color: #0B2447;
+		}
 
-			table	{
-				font-family: Verdana, Arial, Helvetica, sans-serif;
-				font-size: 11px;
-			}
+		table {
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-size: 11px;
+		}
 
-			input	{
-				font-family: Verdana, Arial, Helvetica, sans-serif;
-				font-size: 14px;
-				height: 30px;
-				border-radius: 7px;
-			}
-					
-			button {
-				background: #FFFFFF;
-				border-radius: 999px;
-				box-shadow: #5E5DF0 0 10px 20px -10px;
-				box-sizing: border-box;
-				color: #1d1d1d;
-				font-family: Inter,Helvetica;
-				font-size: 14px;
-				font-weight: 600;
-				padding: 8px 18px;
-			}
-		</style>
-	</head>
+		input {
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			height: 30px;
+		}
+
+		button {
+			background: #FFFFFF;
+			border-radius: 999px;
+			box-shadow: #5E5DF0 0 10px 20px -10px;
+			box-sizing: border-box;
+			color: #1d1d1d;
+			font-family: Inter, Helvetica;
+			font-size: 14px;
+			font-weight: 600;
+			padding: 8px 18px;
+			margin-top: 50px;
+		}
+		.top {
+			margin-bottom: 20px;
+		}
+
+		.form-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: center;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+
+		.form-row {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			flex-basis: 50%;
+		}
+
+		.form-row label {
+			width: 150px;
+			color: white;
+			font-size: 14px;
+			text-align: right;
+			margin-right: 10px;
+		}
+
+		.form-row input[type="text"]
+		{
+			flex: 1;
+		}
+
+		.form-row .input-container {
+			width: 200px;
+		}
+
+		.form-row .input-container input[type="text"]
+		{
+			width: 100%;
+		}
+
+	</style>
+</head>
 <body>
 	<div style="border:0; padding:10px; width:760px; height:auto;">
-		<form action="simpan_supplier.php" method="POST">
+		<form method="post" action="simpan_supplier.php">
 			<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr height="46">
-					<td width="10%"></td>
-					<td width="25%"></td>
-					<td width="65%"><font color="white" size="6">Form Input Data Penerbit</font></td>
+					<div class="top">
+						<td width="10%"></td>
+						<td width="25%"></td>
+						<td width="65%"><font color="White" size="6">Input Data Buku</font></td>
+					</div>
 				</tr>
+				<tr>
+					<td colspan="3">
+						<div class="form-container">
+							<div class="col-md-6">
+								<div class="form-row">
+									<label for="barcode">Barcode:</label>
+									<div class="input-container">
+										<input type="text" name="barcode" id="barcode" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="nama">Penerbit:</label>
+									<div class="input-container">
+										<input type="text" name="nama" id="nama" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="barang">Judul:</label>
+									<div class="input-container">
+										<input type="text" name="barang" id="barang" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-row">
+									<label for="alamat">Alamat:</label>
+									<div class="input-container">
+										<input type="text" name="alamat" id="alamat" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="telepon">Telepon:</label>
+									<div class="input-container">
+										<input type="text" name="telepon" id="telepon" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				
 				<tr height="46">
 					<td></td>
-					<td><font size="3" color="white">Barcode</font></td>
-					<td><input type="text" name="barcode" size="35" maxlength="6" /></td>
-				</tr>
-				<tr height="46">
 					<td></td>
-					<td><font size="3" color="white">Penerbit</font></td>
-					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Nama</font></td>
-					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Alamat</font></td>
-					<td><input type="text" name="alamat" size="35" maxlength="100" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Telepon</font></td>
-					<td><input type="text" name="telepon" size="35" maxlength="30" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td></td>
-					<td><button type="submit" name="Submit" value="Simpan"> Simpan </button>
-						<button type="reset" name="Reset" value="Batal"> Reset </button></td>
-						<button type="button" onclick="location.href='home.php';" value="Home"> Home </button>
+					<td>
+						<button type="submit" name="submit">Submit</button>
+						<button type="reset" name="Reset">Reset</button>
+						<button type="button" onclick="location.href='home.php';">Home</button>
 					</td>
 				</tr>
 			</table>

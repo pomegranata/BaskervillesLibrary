@@ -1,88 +1,158 @@
+<!DOCTYPE html>
 <html>
-	<head>
-		<title>Input Data Barang</title>
-			<style type = "text/css">
-				body	{
-					background-color: #0B2447;
-				}
+<head>
+    <title>Input Data Buku</title>
+	<style type="text/css">
+		body {
+			background-color: #0B2447;
+		}
 
-				table	{
-					font-family: Verdana, Arial, Helvetica, sans-serif;
-					font-size: 11px;
-				}
+		table {
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-size: 11px;
+		}
 
-				input	{
-					font-family: Verdana, Arial, Helvetica, sans-serif;
-					font-size: 14px;
-					height: 30px;
+		input {
+			font-family: Verdana, Arial, Helvetica, sans-serif;
+			font-size: 14px;
+			height: 30px;
+		}
 
-				}
-				
-				button {
-					background: #FFFFFF;
-					border-radius: 999px;
-					box-shadow: #5E5DF0 0 10px 20px -10px;
-					box-sizing: border-box;
-					color: #1d1d1d;
-					font-family: Inter,Helvetica;
-					font-size: 14px;
-					font-weight: 600;
-					padding: 8px 18px;
-				}
-			</style>
-	</head>
+		button {
+			background: #FFFFFF;
+			border-radius: 999px;
+			box-shadow: #5E5DF0 0 10px 20px -10px;
+			box-sizing: border-box;
+			color: #1d1d1d;
+			font-family: Inter, Helvetica;
+			font-size: 14px;
+			font-weight: 600;
+			padding: 8px 18px;
+			margin-top: 50px;
+		}
+		.top {
+			margin-bottom: 20px;
+		}
+
+		.form-container {
+			display: flex;
+			flex-wrap: wrap;
+			justify-content: flex-start;
+			align-items: center;
+			margin-top: 50px;
+			margin-bottom: 20px;
+		}
+
+		.form-row {
+			display: flex;
+			align-items: center;
+			margin-bottom: 10px;
+			flex-basis: 50%;
+		}
+
+		.form-row label {
+			width: 150px;
+			color: white;
+			font-size: 14px;
+			text-align: right;
+			margin-right: 10px;
+		}
+
+		.form-row input[type="text"]
+		{
+			flex: 1;
+		}
+
+		.form-row .input-container {
+			width: 200px;
+		}
+
+		.form-row .input-container input[type="text"]
+		{
+			width: 100%;
+		}
+		select {
+			width: 208px;
+			color: black;
+			font-size: 14px;
+			text-align: left;
+			margin-right: 10px;
+		}
+
+	</style>
+</head>
 <body>
 	<div style="border:0; padding:10px; width:760px; height:auto;">
-		<form action="simpan_barang.php" method="POST">
+		<form method="post" action="simpan_barang.php">
 			<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr height="46">
-					<td width="10%"></td>
-					<td width="25%"></td>
-					<td width="65%"><font color="White" size="6">Input Data Buku</font></td>
+					<div class="top">
+						<td width="10%"></td>
+						<td width="25%"></td>
+						<td width="65%"><font color="White" size="6">Input Data Buku</font></td>
+					</div>
 				</tr>
+				<tr>
+					<td colspan="3">
+						<div class="form-container">
+							<div class="col-md-6">
+								<div class="form-row">
+									<label for="barcode">Barcode:</label>
+									<div class="input-container">
+										<input type="text" name="barcode" id="barcode" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="nama">Judul:</label>
+									<div class="input-container">
+										<input type="text" name="nama" id="nama" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="penulis">Penulis:</label>
+									<div class="input-container">
+										<input type="text" name="penulis" id="penulis" required>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-row">
+									<label for="jenis">Jenis:</label>
+									<div class="input-container">
+										<select name="jenis">
+											<option value="Novel">Novel
+											<option value="Sejarah">Sejarah
+											<option value="Filsafat">Filsafat
+											<option value="Psikologi">Psikologi
+											<option value="Komik">Komik
+											<option value="Komputer">Komputer
+										</select>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="tahun">Tahun Terbit:</label>
+									<div class="input-container">
+										<input type="text" name="tahun" id="tahun" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="stok">Stok:</label>
+									<div class="input-container">
+										<input type="text" name="stok" id="stok" required>
+									</div>
+								</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				
 				<tr height="46">
 					<td></td>
-					<td><font size="3" color="white">Barcode</font></td>
-					<td><input type="text" name="barcode" size="35" maxlength="6" /></td>
-				</tr>
-				<tr height="46">
 					<td></td>
-					<td><font size="3" color="white">Judul</font></td>
-					<td><input type="text" name="nama" size="35" maxlength="100" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Penulis</font></td>
-					<td><input type="text" name="penulis" size="35" maxlength="100" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Jenis</font></td>
-					<td><select name="jenis">
-						<option value="Novel">Novel
-						<option value="Sejarah">Sejarah
-						<option value="Filsafat">Filsafat
-						<option value="Psikologi">Psikologi
-						<option value="Komik">Komik
-						<option value="Komputer">Komputer
-					</select></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td><font size="3" color="white">Tahun Terbit</font></td>
-					<td><input type="text" name="tahun" size="35" maxlength="30" /></td>
-				</tr>
-				<tr height="46">
-					<td> </td>
-					<td><font size="3" color="white">Stok</font></td>
-					<td><input type="text" name="stok" size="35" maxlength="30" /></td>
-				</tr>
-				<tr height="46">
-					<td></td>
-					<td></td>
-					<td><button type="submit" name="Submit" value="Simpan"> Simpan </button>
-						<button type="reset" name="Reset" value="Batal"> Reset </button></td>
-						<button type="button" onclick="location.href='home.php';" value="Home"> Home </button>
+					<td>
+						<button type="submit" name="submit">Submit</button>
+						<button type="reset" name="Reset">Reset</button>
+						<button type="button" onclick="location.href='home.php';">Home</button>
 					</td>
 				</tr>
 			</table>
