@@ -71,11 +71,11 @@ $no = 1;
 	$previous = $halaman - 1;
 	$next = $halaman + 1;
 	
-	$data = mysqli_query($db,"select * from barang");
+	$data = mysqli_query($db,"select * from buku");
 	$jumlah_data = mysqli_num_rows($data);
 	$total_halaman = ceil($jumlah_data / $batas);
 
-	$data_barang = mysqli_query($db,"select * from barang limit $halaman_awal, $batas");
+	$data_buku = mysqli_query($db,"select * from buku limit $halaman_awal, $batas");
 	$nomor = $halaman_awal+1;
 	
 ?>
@@ -106,7 +106,7 @@ $no = 1;
 			<?php 
 			if (isset($_POST['submit'])) {
 			$cari = $_POST['nt'];
-			$query2 = "SELECT * FROM barang WHERE barcode LIKE '%$cari%' OR nama LIKE '%$cari%' OR penulis LIKE '%$cari%' OR jenis LIKE '%$cari%' OR tahun LIKE '%$cari%' OR stok LIKE '%$cari%'";
+			$query2 = "SELECT * FROM buku WHERE barcode LIKE '%$cari%' OR nama LIKE '%$cari%' OR penulis LIKE '%$cari%' OR jenis LIKE '%$cari%' OR tahun LIKE '%$cari%' OR stok LIKE '%$cari%'";
 			$sql = mysqli_query($db, $query2);
 			$jumlah_hasil = mysqli_num_rows($sql);
 
@@ -135,7 +135,7 @@ $no = 1;
 					<?php
 				}
 		} else {
-				while ($d = mysqli_fetch_array($data_barang)) {
+				while ($d = mysqli_fetch_array($data_buku)) {
 					?>
 					<tr>
 						<td><?php echo $d['No']; ?></td>

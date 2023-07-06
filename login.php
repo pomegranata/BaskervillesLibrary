@@ -14,7 +14,7 @@
 					die ("Koneksi ke Database Gagal !");
 				}
 				
-			$sql = "SELECT * FROM t_user where username='$user'";			
+			$sql = "SELECT * FROM user where username='$user'";			
 			$qry = mysqli_query($Open, $sql);
 			$num = mysqli_num_rows ($qry);
 			$row = mysqli_fetch_array ($qry);

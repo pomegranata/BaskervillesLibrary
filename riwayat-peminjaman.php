@@ -98,9 +98,9 @@ $no = 1;
 				$jumlah_data = mysqli_num_rows($data);
 				$total_halaman = ceil($jumlah_data / $batas);
  
-				$data_barang = mysqli_query($db,"select * from peminjaman limit $halaman_awal, $batas");
+				$data_buku = mysqli_query($db,"select * from peminjaman limit $halaman_awal, $batas");
 				$nomor = $halaman_awal+1;
-				while($d = mysqli_fetch_array($data_barang)){
+				while($d = mysqli_fetch_array($data_buku)){
 					?>
 					<tr>
 						<td><?php echo $d['No']; ?></td>

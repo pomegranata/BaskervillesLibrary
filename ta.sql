@@ -10,16 +10,16 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-07-04 11:31:39
+Date: 2023-07-06 11:04:06
 */
 
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for `barang`
+-- Table structure for `buku`
 -- ----------------------------
-DROP TABLE IF EXISTS `barang`;
-CREATE TABLE `barang` (
+DROP TABLE IF EXISTS `buku`;
+CREATE TABLE `buku` (
   `No` int(15) NOT NULL AUTO_INCREMENT,
   `Barcode` varchar(15) NOT NULL,
   `Nama` text NOT NULL,
@@ -27,19 +27,42 @@ CREATE TABLE `barang` (
   `Jenis` varchar(15) NOT NULL DEFAULT '',
   `Tahun` varchar(15) NOT NULL DEFAULT '',
   `Stok` varchar(15) NOT NULL DEFAULT '',
-  PRIMARY KEY (`No`,`Barcode`)
+  PRIMARY KEY (`No`,`Barcode`),
+  KEY `Barcode` (`Barcode`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+
+-- ----------------------------
+-- Records of buku
+-- ----------------------------
+INSERT INTO `buku` VALUES ('1', '1118', 'Wuthering Heights', 'Emily Bronte', 'Novel', '1847', '20');
+INSERT INTO `buku` VALUES ('2', '1111', 'Keajaiban Toko Kelontong Namiya', 'Keigo Higashino', 'Novel', '2020', '35');
+INSERT INTO `buku` VALUES ('3', '1115', 'Fundamental of Python for Machine Learning', 'Teguh Wahyono', 'Komputer', '2018', '44');
+INSERT INTO `buku` VALUES ('4', '1112', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Thomas Hidya Tjaya', 'Filsafat', '2004', '80');
+INSERT INTO `buku` VALUES ('5', '1114', 'World War II Plans That Never Happened', 'Michael Kerrigan', 'Sejarah', '2012', '21');
+INSERT INTO `buku` VALUES ('6', '1113', 'H2O Reborn Phase 0.1', 'Sweta Kartika', 'Komik', '2016', '10');
+INSERT INTO `buku` VALUES ('7', '1116', 'Demian', 'Hermann Hesse', 'Novel', '2019', '55');
+INSERT INTO `buku` VALUES ('8', '1119', 'Kastil', 'Franz Kafka', 'Novel', '2018', '56');
+INSERT INTO `buku` VALUES ('9', '1110', 'Sherlock Holmes: A Study in Scarlet', 'Arthur Conan Doyle', 'Novel', '2019', '100');
+
+-- ----------------------------
+-- Table structure for `jenis`
+-- ----------------------------
+DROP TABLE IF EXISTS `jenis`;
+CREATE TABLE `jenis` (
+  `No` int(15) NOT NULL AUTO_INCREMENT,
+  `Jenis` varchar(15) NOT NULL,
+  PRIMARY KEY (`No`,`Jenis`)
 ) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of barang
+-- Records of jenis
 -- ----------------------------
-INSERT INTO `barang` VALUES ('1', '1118', 'Wuthering Heights', 'Emily Bronte', 'Novel', '1847', '20');
-INSERT INTO `barang` VALUES ('2', '1111', 'Keajaiban Toko Kelontong Namiya', 'Keigo Higashino', 'Novel', '2020', '35');
-INSERT INTO `barang` VALUES ('3', '1115', 'Fundamental of Python for Machine Learning', 'Teguh Wahyono', 'Komputer', '2018', '44');
-INSERT INTO `barang` VALUES ('4', '1112', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Thomas Hidya Tjaya', 'Filsafat', '2004', '80');
-INSERT INTO `barang` VALUES ('5', '1114', 'World War II Plans That Never Happened', 'Michael Kerrigan', 'Sejarah', '2012', '21');
-INSERT INTO `barang` VALUES ('6', '1113', 'H2O Reborn Phase 0.1', 'Sweta Kartika', 'Komik', '2016', '10');
-INSERT INTO `barang` VALUES ('7', '1116', 'Demian', 'Hermann Hesse', 'Novel', '2019', '55');
+INSERT INTO `jenis` VALUES ('1', 'Novel');
+INSERT INTO `jenis` VALUES ('2', 'Komputer');
+INSERT INTO `jenis` VALUES ('3', 'Filsafat');
+INSERT INTO `jenis` VALUES ('4', 'Sejarah');
+INSERT INTO `jenis` VALUES ('5', 'Komik');
+INSERT INTO `jenis` VALUES ('6', 'Biografi');
 
 -- ----------------------------
 -- Table structure for `peminjaman`
@@ -54,7 +77,7 @@ CREATE TABLE `peminjaman` (
   `Pinjam` date NOT NULL,
   `Kembali` date NOT NULL,
   PRIMARY KEY (`No`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of peminjaman
@@ -73,62 +96,44 @@ INSERT INTO `peminjaman` VALUES ('11', 'Hilman', 'Keajaiban Toko Kelontong Namiy
 INSERT INTO `peminjaman` VALUES ('12', 'Faza', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Thomas Hidya Tjaya', 'KPG', '2023-07-04', '2023-07-07');
 
 -- ----------------------------
--- Table structure for `satuan`
+-- Table structure for `penerbit`
 -- ----------------------------
-DROP TABLE IF EXISTS `satuan`;
-CREATE TABLE `satuan` (
-  `No` int(15) NOT NULL AUTO_INCREMENT,
-  `Jenis` varchar(15) NOT NULL,
-  PRIMARY KEY (`No`,`Jenis`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
-
--- ----------------------------
--- Records of satuan
--- ----------------------------
-INSERT INTO `satuan` VALUES ('1', 'Novel');
-INSERT INTO `satuan` VALUES ('2', 'Komputer');
-INSERT INTO `satuan` VALUES ('3', 'Filsafat');
-INSERT INTO `satuan` VALUES ('4', 'Sejarah');
-INSERT INTO `satuan` VALUES ('5', 'Komik');
-INSERT INTO `satuan` VALUES ('6', 'Psikologi');
-
--- ----------------------------
--- Table structure for `supplier`
--- ----------------------------
-DROP TABLE IF EXISTS `supplier`;
-CREATE TABLE `supplier` (
+DROP TABLE IF EXISTS `penerbit`;
+CREATE TABLE `penerbit` (
   `No` int(15) NOT NULL AUTO_INCREMENT,
   `Barcode` varchar(15) NOT NULL,
   `Penerbit` text NOT NULL,
   `Buku` text NOT NULL,
   `Alamat` text NOT NULL,
   `Telepon` varchar(15) NOT NULL DEFAULT '',
-  PRIMARY KEY (`No`)
+  PRIMARY KEY (`No`),
+  KEY `Barcode` (`Barcode`),
+  CONSTRAINT `Barcode` FOREIGN KEY (`Barcode`) REFERENCES `buku` (`Barcode`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of supplier
+-- Records of penerbit
 -- ----------------------------
-INSERT INTO `supplier` VALUES ('1', '1118', 'Mizan Classic', 'Wuthering Heights', 'Jl. Joe No. 11 Jagakarsa, Jakarta Selatan', '+6285781817817');
-INSERT INTO `supplier` VALUES ('2', '1111', 'Gramedia', 'Keajaiban Toko Kelontong Namiya', 'Gedung Kompas Gramedia, Jakarta', '(021) 53650110');
-INSERT INTO `supplier` VALUES ('3', '1115', 'Gava Media', 'Fundamental of Python for Machine Learning', 'Jl. Klitren Lor, Kota Yogyakarta, DIY', '(0274) 558502');
-INSERT INTO `supplier` VALUES ('4', '1112', 'KPG', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Gedung Kompas Gramedia, Jakarta', '02153650110');
-INSERT INTO `supplier` VALUES ('5', '1114', 'Kompas', 'World War II Plans That Never Happened', 'Gedung Kompas Gramedia, Jakarta', '(021) 53670882');
-INSERT INTO `supplier` VALUES ('6', '1113', 'Kolam Komik', 'H2O Reborn Phase 0.1', 'Gedung Kompas Gramedia, Jakarta', '02153670882');
-INSERT INTO `supplier` VALUES ('8', '1116', 'Semicolon', 'Demian', 'Cibinong, Bogor', '@semicolonian');
+INSERT INTO `penerbit` VALUES ('1', '1118', 'Mizan Classic', 'Wuthering Heights', 'Jl. Joe No. 11 Jagakarsa, Jakarta Selatan', '+6285781817817');
+INSERT INTO `penerbit` VALUES ('2', '1111', 'Gramedia', 'Keajaiban Toko Kelontong Namiya', 'Gedung Kompas Gramedia, Jakarta', '(021) 53650110');
+INSERT INTO `penerbit` VALUES ('3', '1115', 'Gava Media', 'Fundamental of Python for Machine Learning', 'Jl. Klitren Lor, Kota Yogyakarta, DIY', '(0274) 558502');
+INSERT INTO `penerbit` VALUES ('4', '1112', 'KPG', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Gedung Kompas Gramedia, Jakarta', '02153650110');
+INSERT INTO `penerbit` VALUES ('5', '1114', 'Kompas', 'World War II Plans That Never Happened', 'Gedung Kompas Gramedia, Jakarta', '(021) 53670882');
+INSERT INTO `penerbit` VALUES ('6', '1113', 'Kolam Komik', 'H2O Reborn Phase 0.1', 'Gedung Kompas Gramedia, Jakarta', '02153670882');
+INSERT INTO `penerbit` VALUES ('7', '1116', 'Semicolon', 'Demian', 'Cibinong, Bogor', '@semicolonian');
 
 -- ----------------------------
--- Table structure for `t_user`
+-- Table structure for `user`
 -- ----------------------------
-DROP TABLE IF EXISTS `t_user`;
-CREATE TABLE `t_user` (
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE `user` (
   `username` varchar(50) NOT NULL,
   `password` varchar(20) NOT NULL DEFAULT '',
   PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
--- Records of t_user
+-- Records of user
 -- ----------------------------
-INSERT INTO `t_user` VALUES ('user2', '2');
-INSERT INTO `t_user` VALUES ('user3', '3');
+INSERT INTO `user` VALUES ('user2', '2');
+INSERT INTO `user` VALUES ('user3', '3');

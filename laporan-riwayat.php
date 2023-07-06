@@ -69,7 +69,7 @@ class PDF extends TCPDF
         $this->SetTextColor(0, 0, 0);
         $this->SetDrawColor(0, 0, 0); 
 
-        $columnWidths = array(10, 25, 125, 35, 35, 28, 28);
+        $columnWidths = array(10, 25, 70, 50, 40, 35, 35);
 
 		$lineWidths = array(0.2, 0.2, 0.2);
 
@@ -92,7 +92,7 @@ while ($row = mysqli_fetch_assoc($result)) {
 	
 	$kolom0 = $row['no'];
     $kolom1 = $row['nama'];
-    $kolom2 = $row['judul'];
+    $kolom2 = substr($row['judul'], 0, 25);
     $kolom3 = $row['penulis'];
 	$kolom4 = $row['penerbit'];
 	$kolom5 = $row['pinjam'];
@@ -101,11 +101,11 @@ while ($row = mysqli_fetch_assoc($result)) {
     
     $pdf->Cell(10, 10, $kolom0, 1);
 	$pdf->Cell(25, 10, $kolom1, 1);
-    $pdf->Cell(125, 10, $kolom2, 1);
-    $pdf->Cell(35, 10, $kolom3, 1);
-	$pdf->Cell(35, 10, $kolom4, 1);
-	$pdf->Cell(28, 10, $kolom5, 1);
-	$pdf->Cell(28, 10, $kolom6, 1);
+    $pdf->Cell(70, 10, $kolom2, 1);
+    $pdf->Cell(50, 10, $kolom3, 1);
+	$pdf->Cell(40, 10, $kolom4, 1);
+	$pdf->Cell(35, 10, $kolom5, 1);
+	$pdf->Cell(35, 10, $kolom6, 1);
 
     
     $pdf->Ln();

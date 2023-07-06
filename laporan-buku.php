@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Penerbit</title>
+		<title>Buku</title>
 		<style type="text/css">
 			body {
 				background-color: #0B2447;
@@ -39,14 +39,14 @@ require_once('TCPDF-6.4.1/tcpdf.php');
 
 ?>
 
-<h2><font color="white">LAPORAN PENERBIT BUKU</h2>
+<h2><font color="white">LAPORAN BUKU</h2>
 <br>
 <br/>
 <br/>
 
 <?php
 
-$query = "SELECT no, barcode, penerbit, buku, alamat, telepon FROM penerbit";
+$query = "SELECT no, barcode, nama, penulis, jenis, tahun, stok FROM buku";
 $result = mysqli_query($db, $query);
 
 class PDF extends TCPDF
@@ -56,7 +56,7 @@ class PDF extends TCPDF
         
         $this->SetFont('Courier', 'B', 12);
 
-        $header = array('No', 'Barcode', 'Penerbit', 'Buku', 'Alamat', 'Telepon');
+        $header = array('No', 'Barcode', 'Nama', 'Penulis', 'Jenis', 'Tahun', 'Stok');
 
         $this->DrawHeaderRow($header);
 
@@ -69,7 +69,7 @@ class PDF extends TCPDF
         $this->SetTextColor(0, 0, 0);
         $this->SetDrawColor(0, 0, 0); 
 
-        $columnWidths = array(10, 20, 35, 65, 106, 45);
+        $columnWidths = array(10, 20, 125, 50, 35, 20, 15);
 
 		$lineWidths = array(0.2, 0.2, 0.2);
 
@@ -92,29 +92,31 @@ while ($row = mysqli_fetch_assoc($result)) {
 	
 	$kolom0 = $row['no'];
     $kolom1 = $row['barcode'];
-    $kolom2 = $row['penerbit'];
-    $kolom3 = substr($row['buku'], 0, 25);
-	$kolom4 = $row['alamat'];
-	$kolom5 = $row['telepon'];
+    $kolom2 = $row['nama'];
+    $kolom3 = $row['penulis'];
+	$kolom4 = $row['jenis'];
+	$kolom5 = $row['tahun'];
+	$kolom6 = $row['stok'];
 
     
     $pdf->Cell(10, 10, $kolom0, 1);
 	$pdf->Cell(20, 10, $kolom1, 1);
-    $pdf->Cell(35, 10, $kolom2, 1);
-    $pdf->Cell(65, 10, $kolom3, 1);
-	$pdf->Cell(106, 10, $kolom4, 1);
-	$pdf->Cell(45, 10, $kolom5, 1);
+    $pdf->Cell(125, 10, $kolom2, 1);
+    $pdf->Cell(50, 10, $kolom3, 1);
+	$pdf->Cell(35, 10, $kolom4, 1);
+	$pdf->Cell(20, 10, $kolom5, 1);
+	$pdf->Cell(15, 10, $kolom6, 1);
 
     
     $pdf->Ln();
 }
 
 
-$pdf->Output(__DIR__ . '/laporan/penerbit/daftar_penerbit.pdf', 'F');
+$pdf->Output(__DIR__ . '/laporan/buku/daftar_buku.pdf', 'F');
 ?>
 	</br>
-		<button onclick="location.href='home.php';" type = "button"> Home </button>
-		<button onclick = "location.href='laporan/penerbit/daftar_penerbit.pdf'" type = "button"> PDF </button>
+		<button onclick="location.href='home.php';" type = "button"> Home </button> 
+		<button onclick = "location.href='laporan/buku/daftar_buku.pdf'" type = "button"> PDF </button>
 	</br>
 </body>
 </html>

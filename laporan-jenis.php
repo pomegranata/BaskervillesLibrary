@@ -46,7 +46,7 @@ require_once('TCPDF-6.4.1/tcpdf.php');
 
 <?php
 
-$query = "SELECT no, jenis FROM satuan";
+$query = "SELECT no, jenis FROM jenis";
 $result = mysqli_query($db, $query);
 
 class PDF extends TCPDF

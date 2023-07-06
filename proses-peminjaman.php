@@ -44,21 +44,21 @@ include "koneksi.php"
 <?php
 
 $nama 		= $_POST['nama'];
-$barang 	= $_POST['barang'];
+$buku 		= $_POST['buku'];
 $penulis	= $_POST['penulis'];
 $penerbit 	= $_POST['penerbit'];
 $peminjaman = $_POST['tanggal'];
 
 $pengembalian = date('Y-m-d', strtotime($peminjaman . ' + 3 days'));
 
-$sql_check = "SELECT * FROM barang WHERE nama = '$barang'";
+$sql_check = "SELECT * FROM buku WHERE nama = '$buku'";
 	$result_check = $db->query($sql_check);
 
 	if ($result_check->num_rows > 0) {
 		
 		
 		$sql_insert = "INSERT INTO peminjaman (nama, judul, penulis, penerbit, pinjam, kembali) VALUES 
-		('$nama', '$barang', '$penulis', '$penerbit', '$peminjaman', '$pengembalian')";
+		('$nama', '$buku', '$penulis', '$penerbit', '$peminjaman', '$pengembalian')";
 		
 		if ($db->query($sql_insert) === TRUE) {
 			echo '<script language="javascript">';
@@ -83,7 +83,7 @@ $pdf->Cell(0, 10, 'Data Peminjaman Buku', 0, 1, 'C');
 $pdf->Ln(10);
 $pdf->SetFont('courier', '', 12);
 $pdf->Cell(0, 10, "Nama Peminjaman		: $nama", 0, 1);
-$pdf->Cell(0, 10, "Judul				: $barang", 0, 1);
+$pdf->Cell(0, 10, "Judul				: $buku", 0, 1);
 $pdf->Cell(0, 10, "Penulis				: $penulis", 0, 1);
 $pdf->Cell(0, 10, "Penerbit				: $penerbit", 0, 1);
 $pdf->Cell(0, 10, "Tanggal Peminjaman	: $peminjaman", 0, 1);

@@ -25,7 +25,7 @@
 
 	else
 	{
-		$pilih = "select * from t_user where username='$nama'";
+		$pilih = "select * from user where username='$nama'";
 		$cek = mysqli_query($db, $pilih);
 		$jumlah_data = mysqli_num_rows($cek);
 		
@@ -41,7 +41,7 @@
 		
 		else
 		{
-			$query="insert into t_user (username, password) values ('$nama', '$sandi')";
+			$query="insert into user (username, password) values ('$nama', '$sandi')";
 			$hasil = mysqli_query($db, $query);
 		
 			if ($hasil)

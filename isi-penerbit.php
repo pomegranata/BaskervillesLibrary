@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Peminjaman</title>
+    <title>Input Data Penerbit Buku</title>
 	<style type="text/css">
 		body {
 			background-color: #0B2447;
@@ -58,8 +58,8 @@
 			margin-right: 10px;
 		}
 
-		.form-row input[type="text"],
-		.form-row input[type="date"] {
+		.form-row input[type="text"]
+		{
 			flex: 1;
 		}
 
@@ -67,21 +67,22 @@
 			width: 200px;
 		}
 
-		.form-row .input-container input[type="text"],
-		.form-row .input-container input[type="date"] {
+		.form-row .input-container input[type="text"]
+		{
 			width: 100%;
 		}
+
 	</style>
 </head>
 <body>
 	<div style="border:0; padding:10px; width:760px; height:auto;">
-		<form method="post" action="proses-peminjaman.php">
+		<form method="post" action="simpan_penerbit.php">
 			<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr height="46">
 					<div class="top">
 						<td width="10%"></td>
 						<td width="25%"></td>
-						<td width="65%"><font color="White" size="6">Peminjaman Buku</font></td>
+						<td width="65%"><font color="White" size="6">Input Data Penerbit Buku</font></td>
 					</div>
 				</tr>
 				<tr>
@@ -89,7 +90,13 @@
 						<div class="form-container">
 							<div class="col-md-6">
 								<div class="form-row">
-									<label for="nama">Nama Peminjam:</label>
+									<label for="barcode">Barcode:</label>
+									<div class="input-container">
+										<input type="text" name="barcode" id="barcode" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="nama">Penerbit:</label>
 									<div class="input-container">
 										<input type="text" name="nama" id="nama" required>
 									</div>
@@ -100,24 +107,18 @@
 										<input type="text" name="buku" id="buku" required>
 									</div>
 								</div>
-								<div class="form-row">
-									<label for="penulis">Penulis:</label>
-									<div class="input-container">
-										<input type="text" name="penulis" id="penulis" required>
-									</div>
-								</div>
 							</div>
 							<div class="col-md-6">
 								<div class="form-row">
-									<label for="penerbit">Penerbit:</label>
+									<label for="alamat">Alamat:</label>
 									<div class="input-container">
-										<input type="text" name="penerbit" id="penerbit" required>
+										<input type="text" name="alamat" id="alamat" required>
 									</div>
 								</div>
 								<div class="form-row">
-									<label for="tanggal">Tanggal Pinjam:</label>
+									<label for="telepon">Telepon:</label>
 									<div class="input-container">
-										<input type="date" name="tanggal" id="tanggal" required>
+										<input type="text" name="telepon" id="telepon" required>
 									</div>
 								</div>
 							</div>
@@ -129,10 +130,9 @@
 					<td></td>
 					<td></td>
 					<td>
-						<button type="submit" name="submit">Pinjam</button>
+						<button type="submit" name="submit">Submit</button>
 						<button type="reset" name="Reset">Reset</button>
 						<button type="button" onclick="location.href='home.php';">Home</button>
-						<button type="button" onclick="location.href='katalog.php';">Katalog</button>
 					</td>
 				</tr>
 			</table>

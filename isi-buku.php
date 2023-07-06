@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Peminjaman</title>
+    <title>Input Data Buku</title>
 	<style type="text/css">
 		body {
 			background-color: #0B2447;
@@ -58,8 +58,8 @@
 			margin-right: 10px;
 		}
 
-		.form-row input[type="text"],
-		.form-row input[type="date"] {
+		.form-row input[type="text"]
+		{
 			flex: 1;
 		}
 
@@ -67,21 +67,29 @@
 			width: 200px;
 		}
 
-		.form-row .input-container input[type="text"],
-		.form-row .input-container input[type="date"] {
+		.form-row .input-container input[type="text"]
+		{
 			width: 100%;
 		}
+		select {
+			width: 208px;
+			color: black;
+			font-size: 14px;
+			text-align: left;
+			margin-right: 10px;
+		}
+
 	</style>
 </head>
 <body>
 	<div style="border:0; padding:10px; width:760px; height:auto;">
-		<form method="post" action="proses-peminjaman.php">
+		<form method="post" action="simpan_buku.php">
 			<table width="760" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr height="46">
 					<div class="top">
 						<td width="10%"></td>
 						<td width="25%"></td>
-						<td width="65%"><font color="White" size="6">Peminjaman Buku</font></td>
+						<td width="65%"><font color="White" size="6">Input Data Buku</font></td>
 					</div>
 				</tr>
 				<tr>
@@ -89,15 +97,15 @@
 						<div class="form-container">
 							<div class="col-md-6">
 								<div class="form-row">
-									<label for="nama">Nama Peminjam:</label>
+									<label for="barcode">Barcode:</label>
 									<div class="input-container">
-										<input type="text" name="nama" id="nama" required>
+										<input type="text" name="barcode" id="barcode" required>
 									</div>
 								</div>
 								<div class="form-row">
-									<label for="buku">Judul:</label>
+									<label for="nama">Judul:</label>
 									<div class="input-container">
-										<input type="text" name="buku" id="buku" required>
+										<input type="text" name="nama" id="nama" required>
 									</div>
 								</div>
 								<div class="form-row">
@@ -109,15 +117,21 @@
 							</div>
 							<div class="col-md-6">
 								<div class="form-row">
-									<label for="penerbit">Penerbit:</label>
+									<label for="jenis">Jenis Buku:</label>
 									<div class="input-container">
-										<input type="text" name="penerbit" id="penerbit" required>
+										<input type="text" name="jenis" id="jenis" required>
 									</div>
 								</div>
 								<div class="form-row">
-									<label for="tanggal">Tanggal Pinjam:</label>
+									<label for="tahun">Tahun Terbit:</label>
 									<div class="input-container">
-										<input type="date" name="tanggal" id="tanggal" required>
+										<input type="text" name="tahun" id="tahun" required>
+									</div>
+								</div>
+								<div class="form-row">
+									<label for="stok">Stok:</label>
+									<div class="input-container">
+										<input type="text" name="stok" id="stok" required>
 									</div>
 								</div>
 							</div>
@@ -129,10 +143,9 @@
 					<td></td>
 					<td></td>
 					<td>
-						<button type="submit" name="submit">Pinjam</button>
+						<button type="submit" name="submit">Submit</button>
 						<button type="reset" name="Reset">Reset</button>
 						<button type="button" onclick="location.href='home.php';">Home</button>
-						<button type="button" onclick="location.href='katalog.php';">Katalog</button>
 					</td>
 				</tr>
 			</table>

@@ -36,7 +36,7 @@
 
 <?php
 	
-	function createPDF($nama, $barang, $penulis, $penerbit, $peminjaman, $pengembalian) {
+	function createPDF($nama, $buku, $penulis, $penerbit, $peminjaman, $pengembalian) {
     $pdf = new TCPDF();
     $pdf->AddPage();
     $pdf->SetFont('times', '', 12);
@@ -48,7 +48,7 @@
 }
 
 	$nama 		= $_POST['nama'];
-	$barang 	= $_POST['barang'];
+	$buku 		= $_POST['buku'];
 	$penulis	= $_POST['penulis'];
 	$penerbit 	= $_POST['penerbit'];
 	$peminjaman = $_POST['tanggal'];
@@ -56,14 +56,14 @@
 	$pengembalian = date('Y-m-d', strtotime($peminjaman . ' + 3 days'));
 	
 
-	$sql_check = "SELECT * FROM barang WHERE nama = '$barang'";
+	$sql_check = "SELECT * FROM buku WHERE nama = '$buku'";
 	$result_check = $db->query($sql_check);
 
 	if ($result_check->num_rows > 0) {
 		
 		
 		$sql_insert = "INSERT INTO peminjaman (nama, judul, penulis, penerbit, pinjam, kembali) VALUES 
-		('$nama', '$barang', '$penulis', '$penerbit', '$peminjaman', '$pengembalian')";
+		('$nama', '$buku', '$penulis', '$penerbit', '$peminjaman', '$pengembalian')";
 		
 		if ($db->query($sql_insert) === TRUE) {
 			echo '<script language="javascript">';

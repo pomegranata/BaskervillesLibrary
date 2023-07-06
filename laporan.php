@@ -30,7 +30,7 @@
 	</head>
 <body>
 <br>
-<h2><font color="white">LAPORAN BARANG</font></h2>
+<h2><font color="white">LAPORAN BUKU</font></h2>
 <br>
 <br/>
 <br/>
@@ -45,7 +45,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><center><button onclick="location.href='laporan-barang.php';" type = "button"> PDF </button></center></td>
+				<td><center><button onclick="location.href='laporan-buku.php';" type = "button"> PDF </button></center></td>
 				<td><center><button onclick="location.href='laporan-jenis.php';" type = "button"> PDF </button></center></td>
 				<td><center><button onclick="location.href='laporan-penerbit.php';" type = "button"> PDF </button></center></td>
 			</tr>

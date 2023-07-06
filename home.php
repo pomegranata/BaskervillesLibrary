@@ -116,9 +116,9 @@
 					<li><a href="home.php">Home</a></li>
 					<li class="dropdown"><a href="#">Data Master</a>
 						<ul class="isi-dropdown">
-							<li><a href="isi-barang.php?p=Master Satuan Barang">Buku</a></li>
-							<li><a href="isi-satuan.php?p=Master Satuan Barang">Jenis </a></li>
-							<li><a href="isi-supplier.php?p=Master Supplier Barang">Penerbit</a></li>
+							<li><a href="isi-buku.php?p=Master Data Buku">Buku</a></li>
+							<li><a href="isi-jenis.php?p=Master Data Jenis Buku">Jenis </a></li>
+							<li><a href="isi-penerbit.php?p=Master Data Penerbit">Penerbit</a></li>
 						</ul>
 					</li>
 					<li class="dropdown"><a href="#">Data Peminjaman Buku</a>
@@ -131,8 +131,8 @@
 					<li class="dropdown"><a href="#">Data Laporan</a>
 						<ul class="isi-dropdown">
 							<li><a href="lihat_data.php">Daftar Buku</a></li>
-							<li><a href="lihat_satuan.php">Daftar Jenis Buku</a></li>
-							<li><a href="lihat_supplier.php">Daftar Penerbit Buku</a></li>
+							<li><a href="lihat_jenis.php">Daftar Jenis Buku</a></li>
+							<li><a href="lihat_penerbit.php">Daftar Penerbit Buku</a></li>
 							<li><a href="laporan.php">Laporan</a></li>
 						</ul>
 					</li>
