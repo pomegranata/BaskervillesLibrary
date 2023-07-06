@@ -56,7 +56,7 @@ class PDF extends TCPDF
         
         $this->SetFont('Courier', 'B', 12);
 
-        $header = array('No', 'Barcode', 'Penerbit', 'Buku', 'Alamat', 'Telepon');
+        $header = array('No', 'Barcode', 'Penerbit', 'Buku', 'Alamat', 'Kontak');
 
         $this->DrawHeaderRow($header);
 

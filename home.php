@@ -18,7 +18,7 @@
 					body{
 						padding: 0;
 						margin: 0;
-						font-family: sans-serif;
+						font-family: Arial, sans-serif;
 						background-color: #0B2447;
 					}
 					header{
@@ -27,6 +27,7 @@
 						padding: 10px;
 						text-align: center;
 					}
+				
 					.menu-dropmenu{
 						background-color: #19376D;
 					}

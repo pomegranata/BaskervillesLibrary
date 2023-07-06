@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-07-06 11:04:06
+Date: 2023-07-06 23:53:37
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,6 +43,7 @@ INSERT INTO `buku` VALUES ('6', '1113', 'H2O Reborn Phase 0.1', 'Sweta Kartika',
 INSERT INTO `buku` VALUES ('7', '1116', 'Demian', 'Hermann Hesse', 'Novel', '2019', '55');
 INSERT INTO `buku` VALUES ('8', '1119', 'Kastil', 'Franz Kafka', 'Novel', '2018', '56');
 INSERT INTO `buku` VALUES ('9', '1110', 'Sherlock Holmes: A Study in Scarlet', 'Arthur Conan Doyle', 'Novel', '2019', '100');
+INSERT INTO `buku` VALUES ('10', '1101', 'Nietzsche', 'EMHAF', 'Sosial', '2017', '34');
 
 -- ----------------------------
 -- Table structure for `jenis`
@@ -63,6 +64,7 @@ INSERT INTO `jenis` VALUES ('3', 'Filsafat');
 INSERT INTO `jenis` VALUES ('4', 'Sejarah');
 INSERT INTO `jenis` VALUES ('5', 'Komik');
 INSERT INTO `jenis` VALUES ('6', 'Biografi');
+INSERT INTO `jenis` VALUES ('7', 'Sosial');
 
 -- ----------------------------
 -- Table structure for `peminjaman`
@@ -94,6 +96,7 @@ INSERT INTO `peminjaman` VALUES ('9', 'Sandayu', 'Demian', 'Hermann Hesse', 'Sem
 INSERT INTO `peminjaman` VALUES ('10', 'Hilman', 'Fundamental of Python for Machine Learning', 'Teguh Wahyono', 'Gava Media', '2023-07-04', '2023-07-07');
 INSERT INTO `peminjaman` VALUES ('11', 'Hilman', 'Keajaiban Toko Kelontong Namiya', 'Keigo Higashino', 'Gramedia', '2023-07-04', '2023-07-07');
 INSERT INTO `peminjaman` VALUES ('12', 'Faza', 'Kierkegaard dan Pergulatan Menjadi Diri Sendiri', 'Thomas Hidya Tjaya', 'KPG', '2023-07-04', '2023-07-07');
+INSERT INTO `peminjaman` VALUES ('13', 'Aktiva', 'Nietzsche', 'EMHAF', 'SOCIALITY', '2023-07-06', '2023-07-09');
 
 -- ----------------------------
 -- Table structure for `penerbit`
@@ -121,6 +124,7 @@ INSERT INTO `penerbit` VALUES ('4', '1112', 'KPG', 'Kierkegaard dan Pergulatan M
 INSERT INTO `penerbit` VALUES ('5', '1114', 'Kompas', 'World War II Plans That Never Happened', 'Gedung Kompas Gramedia, Jakarta', '(021) 53670882');
 INSERT INTO `penerbit` VALUES ('6', '1113', 'Kolam Komik', 'H2O Reborn Phase 0.1', 'Gedung Kompas Gramedia, Jakarta', '02153670882');
 INSERT INTO `penerbit` VALUES ('7', '1116', 'Semicolon', 'Demian', 'Cibinong, Bogor', '@semicolonian');
+INSERT INTO `penerbit` VALUES ('8', '1101', 'SOCIALITY', 'Nietzsche', 'Sewon, Bantul', '(0274) 37944');
 
 -- ----------------------------
 -- Table structure for `user`
