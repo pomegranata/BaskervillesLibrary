@@ -3,7 +3,7 @@
 	<head>
 		<title>Data Riwayat Peminjaman</title>
 	<style type="text/css">
-			body{
+		body{
 			padding: 0;
 			margin: 0;
 			font-family: Arial, sans-serif;
@@ -160,6 +160,23 @@
 require_once 'koneksi.php';
 $no = 1;
 ?>
+
+<?php 
+				$batas = 5;
+				$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
+				$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
+ 
+				$previous = $halaman - 1;
+				$next = $halaman + 1;
+				
+				$data = mysqli_query($db,"select * from peminjaman");
+				$jumlah_data = mysqli_num_rows($data);
+				$total_halaman = ceil($jumlah_data / $batas);
+ 
+				$data_buku = mysqli_query($db,"select * from peminjaman limit $halaman_awal, $batas");
+				$nomor = $halaman_awal+1;
+				
+				?>
 <h2><font color="white">LAPORAN DATA RIWAYAT PEMINJAMAN</font></h2>
 <br>
 	<form method="post">
@@ -183,20 +200,38 @@ $no = 1;
 			</tr>
 		</thead>
 		<tbody>
-				<?php 
-				$batas = 5;
-				$halaman = isset($_GET['halaman'])?(int)$_GET['halaman'] : 1;
-				$halaman_awal = ($halaman>1) ? ($halaman * $batas) - $batas : 0;	
- 
-				$previous = $halaman - 1;
-				$next = $halaman + 1;
-				
-				$data = mysqli_query($db,"select * from peminjaman");
-				$jumlah_data = mysqli_num_rows($data);
-				$total_halaman = ceil($jumlah_data / $batas);
- 
-				$data_buku = mysqli_query($db,"select * from peminjaman limit $halaman_awal, $batas");
-				$nomor = $halaman_awal+1;
+			<?php 
+			if (isset($_POST['submit'])) {
+			$cari = $_POST['nt'];
+			$query2 = "SELECT * FROM peminjaman WHERE nama LIKE '%$cari%' OR judul LIKE '%$cari%' OR penulis LIKE '%$cari%' OR penerbit LIKE '%$cari%' OR pinjam LIKE '%$cari%' OR kembali LIKE '%$cari%'";
+			$sql = mysqli_query($db, $query2);
+			$jumlah_hasil = mysqli_num_rows($sql);
+
+				if ($jumlah_hasil > 0) {
+					while ($r = mysqli_fetch_array($sql)) {
+					?>
+						<script language="JavaScript">
+							alert('Data ditemukan!');
+						</script>
+						<tr>
+							<td><?php echo $no++ ?></td>
+							<td><?php echo $r['Nama']; ?></td>
+							<td><?php echo $r['Judul']; ?></td>
+							<td><?php echo $r['Penulis']; ?></td>
+							<td><?php echo $r['Penerbit']; ?></td>
+							<td><?php echo $r['Pinjam']; ?></td>
+							<td><?php echo $r['Kembali']; ?></td>
+						</tr>
+					<?php
+					}
+				} else {
+					?>
+						<script language="JavaScript">
+							alert('Data tidak ditemukan!');
+						</script>
+					<?php
+				}
+		} else {
 				while($d = mysqli_fetch_array($data_buku)){
 					?>
 					<tr>
@@ -210,134 +245,8 @@ $no = 1;
 					</tr>
 					<?php
 				}
-				?>
-				
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE nama LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE judul LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE penulis LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE penerbit LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE pinjam LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
-<?php 
-if (ISSET($_POST['submit'])){
-	$cari = $_POST['nt'];
-	$query2 = "SELECT * FROM peminjaman WHERE kembali LIKE '%$cari%'";
-	$sql = mysqli_query($db, $query2);
-	while ($r = mysqli_fetch_array($sql)){
-	 ?>
-			<script language="JavaScript">
-			alert('Data ditemukan!');
-			</script>
-			<tr>
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $r['Nama']; ?></td>
-				<td><?php echo $r['Judul']; ?></td>
-				<td><?php echo $r['Penulis']; ?></td>
-				<td><?php echo $r['Penerbit']; ?></td>
-				<td><?php echo $r['Pinjam']; ?></td>
-				<td><?php echo $d['Kembali']; ?></td>
-			</tr>
-<?php }} ?>
-
+			}
+			?>	
 	</tbody>
 	</table>
 	<nav>

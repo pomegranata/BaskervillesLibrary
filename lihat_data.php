@@ -70,13 +70,17 @@
 					color: #ffffff ;
 					background: #f3f3f3 ;
 				}
+				h2 {
+					margin: 20px;
+					color: #FFFFFF;
+				}
 				table,tr,td {
-								color: #FFFFFF;
-								border: 1px solid;
-								border-color:#576CBC;
+					color: #FFFFFF;
+					border: 1px solid;
+					border-color:#576CBC;
 							}
 				thead 		{
-								background-color: #576CBC;
+					background-color: #576CBC;
 							}
 				input {
 					background: #FFFFFF;

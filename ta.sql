@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50505
 File Encoding         : 65001
 
-Date: 2023-07-06 23:53:37
+Date: 2023-07-07 08:24:01
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -29,7 +29,7 @@ CREATE TABLE `buku` (
   `Stok` varchar(15) NOT NULL DEFAULT '',
   PRIMARY KEY (`No`,`Barcode`),
   KEY `Barcode` (`Barcode`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of buku
@@ -44,6 +44,7 @@ INSERT INTO `buku` VALUES ('7', '1116', 'Demian', 'Hermann Hesse', 'Novel', '201
 INSERT INTO `buku` VALUES ('8', '1119', 'Kastil', 'Franz Kafka', 'Novel', '2018', '56');
 INSERT INTO `buku` VALUES ('9', '1110', 'Sherlock Holmes: A Study in Scarlet', 'Arthur Conan Doyle', 'Novel', '2019', '100');
 INSERT INTO `buku` VALUES ('10', '1101', 'Nietzsche', 'EMHAF', 'Sosial', '2017', '34');
+INSERT INTO `buku` VALUES ('11', '0001', 'Ego is The Enemy', 'Ryan Holiday', 'Self-Improvemen', '2019', '90');
 
 -- ----------------------------
 -- Table structure for `jenis`
@@ -53,7 +54,7 @@ CREATE TABLE `jenis` (
   `No` int(15) NOT NULL AUTO_INCREMENT,
   `Jenis` varchar(15) NOT NULL,
   PRIMARY KEY (`No`,`Jenis`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of jenis
@@ -65,6 +66,7 @@ INSERT INTO `jenis` VALUES ('4', 'Sejarah');
 INSERT INTO `jenis` VALUES ('5', 'Komik');
 INSERT INTO `jenis` VALUES ('6', 'Biografi');
 INSERT INTO `jenis` VALUES ('7', 'Sosial');
+INSERT INTO `jenis` VALUES ('8', 'Self-Improvemen');
 
 -- ----------------------------
 -- Table structure for `peminjaman`
@@ -112,7 +114,7 @@ CREATE TABLE `penerbit` (
   PRIMARY KEY (`No`),
   KEY `Barcode` (`Barcode`),
   CONSTRAINT `Barcode` FOREIGN KEY (`Barcode`) REFERENCES `buku` (`Barcode`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
 -- Records of penerbit
@@ -125,6 +127,7 @@ INSERT INTO `penerbit` VALUES ('5', '1114', 'Kompas', 'World War II Plans That N
 INSERT INTO `penerbit` VALUES ('6', '1113', 'Kolam Komik', 'H2O Reborn Phase 0.1', 'Gedung Kompas Gramedia, Jakarta', '02153670882');
 INSERT INTO `penerbit` VALUES ('7', '1116', 'Semicolon', 'Demian', 'Cibinong, Bogor', '@semicolonian');
 INSERT INTO `penerbit` VALUES ('8', '1101', 'SOCIALITY', 'Nietzsche', 'Sewon, Bantul', '(0274) 37944');
+INSERT INTO `penerbit` VALUES ('9', '0001', 'Elex Media', 'Ego is The Enemy', 'Kompas Gramedia, Gramedia Jl. Palmerah Sel. No.26, RT.4/RW.2, Gelora, Tanah Abang, Central Jakarta C', '02153670882');
 
 -- ----------------------------
 -- Table structure for `user`

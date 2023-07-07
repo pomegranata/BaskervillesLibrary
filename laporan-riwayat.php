@@ -70,6 +70,11 @@
 			color: #ffffff ;
 			background: #f3f3f3 ;
 		}
+		
+		h2 {
+			margin: 20px;
+			color: #FFFFFF;
+		}
 			
 		table,tr,td {
 			color: #FFFFFF;
